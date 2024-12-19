@@ -1,5 +1,5 @@
 import SwiftUI
-import SwiftUIIntrospect
+@_spi(Advanced) import SwiftUIIntrospect
 
 struct ItemModalPresenterViewModifier<ModalContent: View, Item: Identifiable>: ViewModifier {
 
@@ -32,7 +32,7 @@ struct ItemModalPresenterViewModifier<ModalContent: View, Item: Identifiable>: V
         content
             .background(
                 ItemModalPresenter(item: $presentedItem, configuration: configuration, onDismiss: onDismiss, content: modalContent)
-                    .introspect(.viewController, on: .iOS(.v13, .v14, .v15, .v16, .v17, .v18)) {
+                    .introspect(.viewController, on: .iOS(.v13...)) {
                         coordinator.uiViewController = $0
                     }
             )
