@@ -11,14 +11,13 @@ let package = Package(
     products: [
         .library(name: "ModalPresenter", targets: ["ModalPresenter"]),
     ],
-    dependencies: [
-        // Dependencies declare other packages that this package depends on.
-        .package(url: "https://github.com/siteline/SwiftUI-Introspect.git", from: "0.1.4"),
+    dependencies: [                
+        .package(url: "https://github.com/siteline/SwiftUI-Introspect.git", from: "1.3.0"),
     ],
     targets: [
         .target(
             name: "ModalPresenter",
-            dependencies: [.product(name: "Introspect", package: "SwiftUI-Introspect")],
+            dependencies: [.product(name: "SwiftUIIntrospect", package: "SwiftUI-Introspect")],
             path: "Sources"
         ),
         .testTarget(

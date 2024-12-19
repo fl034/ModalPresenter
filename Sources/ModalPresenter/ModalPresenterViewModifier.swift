@@ -1,5 +1,5 @@
 import SwiftUI
-import Introspect
+import SwiftUIIntrospect
 
 struct ModalPresenterViewModifier<ModalContent: View>: ViewModifier {
 
@@ -31,8 +31,8 @@ struct ModalPresenterViewModifier<ModalContent: View>: ViewModifier {
         content
             .background(
                 ModalPresenter(isPresented: $isPresented, configuration: configuration, onDismiss: onDismiss, content: modalContent)
-                    .introspectViewController { viewController in
-                        coordinator.uiViewController = viewController
+                    .introspect(.viewController, on: .iOS(.v13, .v14, .v15, .v16, .v17, .v18)) {
+                        coordinator.uiViewController = $0
                     }
             )
             .onDisappear {
